@@ -2,6 +2,8 @@
 
 var score, turnScore;
 
+newGame();
+
 // create functions
 
 // event handlers
@@ -75,7 +77,51 @@ document.querySelector('.btn-save').addEventListener('click', function() {
 	
 });
 
+function nextPlayer () {
+	//next player
+		activePlayer === 0 ? activePlayer = 1 : activePlayer = 0; // an abbreviated version of an if statement
+		roundScore = 0;
+
+		document.getElementById('current-0').textContent = '0';
+		document.getElementById('current-1').textContent = '0';
+		
+		document.querySelector('.player-0-space').classList.toggle('active');
+		document.querySelector('.player-1-space').classList.toggle('active');
+
+		//document.querySelector('player-0-space').classList.remove('active');
+		//document.querySelector('player-1-space').classList.add('active');
+}
 
 
 
 document.querySelector('.btn-new').addEventListener('click', newGame);
+
+function newGame() {
+	scores = [0, 0];
+	activePlayer = 0;
+	dice = 0;
+	roundScore = 0;
+	prevScore = 0;
+	gamePlaying = true;
+	/*document.getElementById('hero-1').style.display = 'none';
+	document.getElementById('hero-2').style.display = 'none';*/
+
+	document.getElementById('hero-1').src = 'images/dice-0' + '.jpg';
+	document.getElementById('hero-2').src = 'images/dice-0' + '.jpg';
+
+	document.getElementById('score-0').textContent = '0';
+	document.getElementById('score-1').textContent = '0';
+
+	document.getElementById('current-0').textContent = '0';
+	document.getElementById('current-1').textContent = '0';
+
+	document.getElementById('name-0').textContent = 'Player 1';
+	document.getElementById('name-1').textContent = 'Player 2';
+
+	document.querySelector('.player-0-panel').classList.remove('winner');
+	document.querySelector('.player-1-panel').classList.remove('winner');
+	document.querySelector('.player-0-panel').classList.remove('active');
+	document.querySelector('.player-1-panel').classList.remove('active');
+	document.querySelector('.player-0-panel').classList.add('active');
+		
+}
